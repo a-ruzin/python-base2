@@ -31,23 +31,29 @@ print(id(prices))
 prices.sort()
 print(id(prices))
 
+prices_to_print = []
 for price in prices:
     rubles = int(price)
     kopeeks = int(price * 100) % 100
-    print(f'{rubles} руб {kopeeks:02} коп')
+    prices_to_print.append(f'{rubles} руб {kopeeks:02} коп')
+print(', '.join(prices_to_print))
 
 print('-------')
 
 new_prices = sorted(prices, reverse=True)
+prices_to_print = []
 print(id(new_prices))
 for price in new_prices:
     rubles = int(price)
     kopeeks = int(price * 100) % 100
-    print(f'{rubles} руб {kopeeks:02} коп')
+    prices_to_print.append(f'{rubles} руб {kopeeks:02} коп')
+print(', '.join(prices_to_print))
 
 print('-------')
 
+prices_to_print = []
 for price in prices[-5:]:
     rubles = int(price)
     kopeeks = int(price * 100) % 100
-    print(f'{rubles} руб {kopeeks:02} коп')
+    prices_to_print.append(f'{rubles} руб {kopeeks:02} коп')
+print(', '.join(prices_to_print))
