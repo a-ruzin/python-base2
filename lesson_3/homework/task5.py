@@ -17,51 +17,21 @@ adjectives = ["веселый", "яркий", "зеленый", "утопичн�
 
 import random
 
-nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
-adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
-adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
 
-
-def get_joke():
+def get_jokes(n, uniq=False):
     """
-    Функция возвращает одну шутки в виде строки
-
-    :return: строка
-    """
-    noun = random.choice(nouns)
-    adverb = random.choice(adverbs)
-    adjective = random.choice(adjectives)
-    return f'{noun} {adverb} {adjective}'
-
-
-def get_jokes(n):
-    """
-    Функция возвращает шутки в виде списка строк
+    Функция возвращает шутки в виде списка строк.
 
     :param n: int - количество шутко, которое надо вернуть
-    :return: список строк
-    """
-    jokes = []
-    for i in range(n):
-        jokes.append(get_joke())
-    return jokes
-
-
-print(get_jokes(n=2))
-
-
-def get_jokes_uniq(n):
-    """
-    Функция возвращает шутки в виде списка строк
-
-    :param n: int - количество шутко, которое надо вернуть
+    :param uniq: bool - нужно ли генерировать шутки из слов без повторений
     :return: список строк
     """
     nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
     adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
     adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
 
-    n = min(n, len(nouns), len(adverbs), len(adjectives))
+    if uniq:
+        n = min(n, len(nouns), len(adverbs), len(adjectives))
 
     jokes = []
     for i in range(n):
@@ -71,10 +41,13 @@ def get_jokes_uniq(n):
         joke = f'{noun} {adverb} {adjective}'
         jokes.append(joke)
 
-        nouns.remove(noun)
-        adverbs.remove(adverb)
-        adjectives.remove(adjective)
+        if uniq:
+            nouns.remove(noun)
+            adverbs.remove(adverb)
+            adjectives.remove(adjective)
     return jokes
 
 
-print(get_jokes_uniq(7))
+print(get_jokes(7))
+print(get_jokes(7, False))
+print(get_jokes(7, True))
