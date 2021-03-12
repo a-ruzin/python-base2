@@ -23,13 +23,13 @@
 
 # print('Вася любит {what} за {price:.2f} рублей'.format(what='мороженное', price=50))
 
-what = (1,2,3,4)
-price = 50
-print(f'Вася любит {what} за {price:.2f} рублей')
-
-print(len(what), what)
-
-'2'
+# what = (1,2,3,4)
+# price = 50
+# print(f'Вася любит {what} за {price:.2f} рублей')
+#
+# print(len(what), what)
+#
+# '2'
 
 #
 # for ch in xxx[6:]:
@@ -67,3 +67,27 @@ print(len(what), what)
 # other_cat.color = 'red'
 # other_cat.describe()
 # cat.describe()
+#
+# price = 8.1
+# price2 = 4 + 4.1
+#
+# if abs(price-price2) < 0.00001:
+#     # price == price2
+#     pass
+#
+# # Переменные в Python принято называть маленькими буквами через подчеркивание PriceList
+#
+# element = ';'
+# if element.isdigit():
+#     pass
+
+# нормально, но нагляднее было бы "+" вместо chr(43)
+
+# Не используйте с параметром: `split(' ')` без необходимости, лучше пишите `split()`.
+# Если в строке встретятся двойные пробелы, то у вас в результирующем списке будут пустые строчки.
+
+# string = "слово   другое слово"
+# print(string.split(' '))
+# print(string.split())
+
+word = "+5.5"
