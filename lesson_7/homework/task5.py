@@ -10,7 +10,7 @@
     }
 Сохраните результаты в файл <folder_name>_summary.json в той же папке, где запустили скрипт.
 """
-
+import json
 import math
 import os
 from collections import defaultdict
@@ -32,3 +32,8 @@ for dirname, subdirs, filenames in os.walk('../../'):
 
 stat = {k: (v[0], list(v[1])) for k, v in stats2.items()}
 print(stat)
+
+base_name = os.path.basename(os.path.abspath('.'))
+filename = f'{base_name}_summary.json'
+with open(filename, 'w', encoding='utf-8') as f:
+    json.dump(stat, f, indent=4)
