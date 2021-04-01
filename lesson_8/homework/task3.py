@@ -18,12 +18,20 @@ def calc_cube(x):
 # >>> a = calc_cube(5)
 # calc_cube(5: <class 'int'>)
 """
+from functools import wraps
 
 
 def type_logger(func):
+
+    @wraps(func)
     def wrapper(*args, **kwargs):
-        print(f'Is called {func.__name__}({", ".join(map(str, args))})')
-        return func(*args, **kwargs)
+        result = func(*args, **kwargs)
+        arg_types = ", ".join(map(lambda x: f'{x}: {type(x).__name__}', args))
+        kwarg_types = ", ".join(map(lambda pair: f'{pair[0]}={pair[1]}: {type(pair[1]).__name__}', kwargs.items()))
+        if arg_types and kwarg_types:
+            kwarg_types = ', ' + kwarg_types
+        print(f'Is called {func.__name__}({arg_types}{kwarg_types}) -> {type(result).__name__}')
+        return result
 
     return wrapper
 
@@ -33,4 +41,5 @@ def calc_cube(x):
     return x ** 3
 
 
-a = calc_cube(5)
+a = calc_cube(3)
+print(a)
